@@ -1,0 +1,25 @@
+import { stringify } from "@angular/core/src/render3/util";
+
+export class DataService{
+    accounts = [
+        {
+          name: 'Master Account',
+          status: 'active'
+        },
+        {
+          name: 'Testaccount',
+          status: 'inactive'
+        },
+        {
+          name: 'Hidden Account',
+          status: 'unknown'
+        }
+      ];
+
+      addAccount(name:string,status:string){
+        this.accounts.push({name:name,status:status});
+      }
+      updatestatus(id:number,status:string){
+        this.accounts[id].status=status;
+      }
+}
