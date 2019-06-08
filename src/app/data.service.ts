@@ -1,5 +1,7 @@
-import { stringify } from "@angular/core/src/render3/util";
 
+import { LoggingService } from "./logging.service";
+import { Injectable } from "@angular/core";
+@Injectable()
 export class DataService{
     accounts = [
         {
@@ -16,10 +18,15 @@ export class DataService{
         }
       ];
 
+      constructor(private loginService:LoggingService){}
+
       addAccount(name:string,status:string){
         this.accounts.push({name:name,status:status});
+        this.loginService.logStatusChange(status);
+        
       }
       updatestatus(id:number,status:string){
         this.accounts[id].status=status;
+        this.loginService.logStatusChange(status);
       }
 }
